@@ -16,6 +16,7 @@ class Transaction extends Model
         'receipt_place',
         'issue_place',
         'report',
+        'barcode',
     ];
 
     public function departments(): BelongsToMany

@@ -7,17 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Barcode extends Model
+class Warehouse_Stock extends Model
 {
     use HasFactory,SoftDeletes;
 
     protected $fillable = [
-        "barcode"
+        'pieces',
+        'receipt_place',
+        'issue_place',
+        'report',
+        'barcode',
     ];
 
-    public function transections(): BelongsToMany
-    {
-        return $this->belongsToMany(Transaction::class);
-    }
-
+    public function warehouse(): BelongsToMany
+        {
+            return $this ->belongsToMany(Warehouse::class);
+        }
 }

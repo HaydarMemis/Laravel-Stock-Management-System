@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transactions', function (Blueprint $table) {
-            $table->integer('pieces');
+        Schema::create('warehouse__stocks', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->integer('pieces');
             $table->json('receipt_place');
             $table->json('issue_place');
             $table->string('report')->nullable();
             $table->softDeletes();
-            $table->string('barcode')->unique();
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('warehouse__stocks');
     }
 };

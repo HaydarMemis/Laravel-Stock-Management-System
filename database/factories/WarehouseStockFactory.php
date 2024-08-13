@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Transaction>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Warehouse_Stock>
  */
-class TransactionFactory extends Factory
+class WarehouseStockFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -21,7 +21,6 @@ class TransactionFactory extends Factory
             'receipt_place' => fake()->creditCardDetails(),
             'issue_place' => fake()->creditCardDetails(),
             'report' => fake()->file(),
-            'barcode' => fake()->ean13(),
         ];
     }
 }
