@@ -12,7 +12,7 @@ class Transaction extends Model
     use HasFactory,SoftDeletes;
 
     protected $fillable = [
-        'pieecs',
+        'pieces',
         'receipt_place',
         'issue_place',
         'report',

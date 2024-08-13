@@ -17,7 +17,10 @@ class MaterialFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+                'name' => fake()->name(),
+                'barcode' => fake()->ean13(),
+                'information' => fake()->creditCardDetails(),
+                'type' => fake()->type(),
         ];
     }
 }

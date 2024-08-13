@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('barcode')->unique();
-            $table->timestamp('information')->nullable();
+            $table->json('information')->nullable();
             $table->string('type');
             $table->softDeletes();
     });

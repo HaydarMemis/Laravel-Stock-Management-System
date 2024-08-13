@@ -17,7 +17,10 @@ class TransactionFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'pieces' => fake()->randomDigit(),
+            'receipt_place' => fake()->creditCardDetails(),
+            'issue_place' => fake()->creditCardDetails(),
+            'report' => fake()->file(),
         ];
     }
 }
