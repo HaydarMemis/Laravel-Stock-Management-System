@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Product;
+use App\Models\User;
+use App\Models\Warehouse;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,6 +25,9 @@ class TransactionFactory extends Factory
             'issue_place' => fake()->creditCardDetails(),
             'report' => fake()->file(),
             'barcode' => fake()->ean13(),
+            'warehouse_id' => Warehouse::factory(),
+            'product_id' => Product::factory(),
+            'user_id' => User::factory(),
         ];
     }
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Warehouse_Stock;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
-class WarehouseStockController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class WarehouseStockController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Warehouse_Stock $warehouse_Stock)
+    public function show(Product $product)
     {
         //
     }
@@ -42,7 +42,7 @@ class WarehouseStockController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Warehouse_Stock $warehouse_Stock)
+    public function edit(Product $product)
     {
         //
     }
@@ -50,7 +50,7 @@ class WarehouseStockController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Warehouse_Stock $warehouse_Stock)
+    public function update(Request $request, Product $product)
     {
         //
     }
@@ -58,7 +58,7 @@ class WarehouseStockController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Warehouse_Stock $warehouse_Stock)
+    public function destroy(Product $product)
     {
         //
     }

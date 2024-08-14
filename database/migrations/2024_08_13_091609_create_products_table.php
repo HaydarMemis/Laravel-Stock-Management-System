@@ -11,22 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('warehouse__stocks', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->integer('pieces');
-            $table->json('receipt_place');
-            $table->json('issue_place');
-            $table->string('report')->nullable();
+            $table->string('name');
+            $table->json('information')->nullable();
+            $table->string('type');
             $table->softDeletes();
-        });
-    }
+    });
 
+    }
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('warehouse__stocks');
+        Schema::dropIfExists('products');
     }
 };
