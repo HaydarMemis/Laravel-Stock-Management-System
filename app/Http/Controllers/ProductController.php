@@ -12,23 +12,24 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $product = Product::all();
+        return $product;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate(
+            ["name"=>"required|string",
+            "information"=> "nullable|string",
+            "type"=> "required|string",
+
+        ]);
+        $Product = Product::create($request->all());
+        return $Product;
     }
 
     /**
@@ -36,23 +37,23 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return $product;
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Product $product)
     {
-        //
+        $validated = $request->validate(
+            ["name"=>"required|string",
+            "information"=> "nullable|string",
+            "type"=> "required|string",]
+        );
+
+        $product->update($validated);
+        return $product;
     }
 
     /**
@@ -60,6 +61,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return response()->json([
+            "message" => "Successfully Deleted"
+        ]);
     }
 }

@@ -12,23 +12,23 @@ class WarehouseController extends Controller
      */
     public function index()
     {
-        //
+        $warehouse = Warehouse::all();
+        return $warehouse;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            "name"=>"required|string",
+            "depatment_id"=> "required",
+        ]);
+
+        $warehouses = Warehouse::create($validated);
+        return $warehouses;
     }
 
     /**
@@ -36,15 +36,7 @@ class WarehouseController extends Controller
      */
     public function show(Warehouse $warehouse)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Warehouse $warehouse)
-    {
-        //
+        return $warehouse;
     }
 
     /**
@@ -52,7 +44,12 @@ class WarehouseController extends Controller
      */
     public function update(Request $request, Warehouse $warehouse)
     {
-        //
+        $validated = $request->validate([
+            "name"=>"required|string",
+            "depatment_id"=> "required",
+            ]);
+            $warehouse -> update($validated);
+            return $warehouse;
     }
 
     /**
@@ -60,6 +57,9 @@ class WarehouseController extends Controller
      */
     public function destroy(Warehouse $warehouse)
     {
-        //
+        $warehouse ->delete();
+        return response()->json([
+            "message"=> "Successfully Deleted"
+            ]);
     }
 }

@@ -12,23 +12,17 @@ class BarcodeController extends Controller
      */
     public function index()
     {
-        //
+        $barcode = Barcode::all();
+        return $barcode;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate(
+            ["barcode" => "required",
+            "product_id" => "required",
+        ]);
     }
 
     /**
@@ -36,23 +30,20 @@ class BarcodeController extends Controller
      */
     public function show(Barcode $barcode)
     {
-        //
+        return $barcode;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Barcode $barcode)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Barcode $barcode)
     {
-        //
+        $validated = $request->validate([
+            "barcode"=> "requrired", "product_id"=> "required",
+        ]);
+        $barcode->update($validated);
+        return $barcode;
     }
 
     /**
@@ -60,6 +51,7 @@ class BarcodeController extends Controller
      */
     public function destroy(Barcode $barcode)
     {
-        //
+        $barcode->delete();
+        return response()->json(["Successfully Deleted"=> ""],200);
     }
 }

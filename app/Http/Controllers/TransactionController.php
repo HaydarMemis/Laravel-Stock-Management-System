@@ -12,15 +12,8 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $transaction = Transaction::all();
+        return $transaction;
     }
 
     /**
@@ -28,7 +21,18 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate(
+            ["pieces"=>"required|numeric",
+            "warehouse_id"=> "required|exists:warehouses,id",
+            "product_id"=> "required|exists:products,id",
+            "user_id"=> "required|exist:users,id",
+            "receipt_place"=> "required|json",
+            "issue_place"=> "required,json",
+            "report"=> "nullable|string",
+            "barcode_id"=> "required|exist:barcodes,id",
+        ]);
+        $transaction = Transaction::create($request->all());
+        return $transaction;
     }
 
     /**
@@ -36,23 +40,27 @@ class TransactionController extends Controller
      */
     public function show(Transaction $transaction)
     {
-        //
+        return $transaction;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Transaction $transaction)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Transaction $transaction)
     {
-        //
+        $validated = $request->validate(
+            ["pieces"=>"required|numeric",
+            "warehouse_id"=> "required|exists:warehouses,id",
+            "product_id"=> "required|exists:products,id",
+            "user_id"=> "required|exist:users,id",
+            "receipt_place"=> "required|json",
+            "issue_place"=> "required,json",
+            "report"=> "nullable|string",
+            "barcode_id"=> "required|exist:barcodes,id",
+        ]);
+        $transaction->update($validated);
+        return $transaction;
     }
 
     /**
@@ -60,6 +68,9 @@ class TransactionController extends Controller
      */
     public function destroy(Transaction $transaction)
     {
-        //
+        $transaction->delete();
+        return response()->json([
+            "message" => "Successfully Deleted"
+        ]);
     }
 }

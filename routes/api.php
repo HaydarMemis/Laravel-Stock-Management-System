@@ -16,5 +16,9 @@ Route::post('/tokens/create', function (Request $request) {
     return ['token' => $token->plainTextToken];
 });
 
-Route ::apiResource('departments',DepartmentController::class);
+Route ::apiResources([
+    'departments'=>DepartmentController::class,
+    'categories'=>DepartmentController::class,
+    'barcodes'=>DepartmentController::class,
+]);
 

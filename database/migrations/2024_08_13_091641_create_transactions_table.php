@@ -21,7 +21,7 @@ return new class extends Migration
             $table->json('issue_place');
             $table->string('report')->nullable();
             $table->softDeletes();
-            $table->foreignId('barcode')->constrained()->cascadeOnDelete();
+            $table->foreignId('barcode_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

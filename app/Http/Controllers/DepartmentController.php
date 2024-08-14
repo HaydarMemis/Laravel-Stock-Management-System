@@ -60,7 +60,7 @@ class DepartmentController extends Controller
     {
         $department->delete();
         return response()->json([
-            "message" => "Deletion Successful"
+            "message" => "Successfully Deleted"
         ]);
     }
 }
