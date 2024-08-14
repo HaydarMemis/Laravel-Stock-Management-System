@@ -12,23 +12,25 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        $departments = Department::all();
+        return $departments;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            "name" => "required",
+        ]);
+        // $department = new Department();
+        // $department->name = $request->name;
+        // return $department->save();
+
+        $department = Department::create($validated);
+        return $department;
     }
 
     /**
@@ -36,15 +38,7 @@ class DepartmentController extends Controller
      */
     public function show(Department $department)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Department $department)
-    {
-        //
+        return $department;
     }
 
     /**
@@ -52,7 +46,11 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, Department $department)
     {
-        //
+        $validated = $request->validate([
+            "name" => "required",
+        ]);
+        $department->update($validated);
+        return $department;
     }
 
     /**
@@ -60,6 +58,9 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
-        //
+        $department->delete();
+        return response()->json([
+            "message" => "Deletion Successful"
+        ]);
     }
 }
