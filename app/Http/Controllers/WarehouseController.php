@@ -24,7 +24,7 @@ class WarehouseController extends Controller
     {
         $validated = $request->validate([
             "name"=>"required|string",
-            "depatment_id"=> "required|exists:departments,id",
+            "department_id"=> "required|exists:departments,id",
         ]);
 
         $warehouses = Warehouse::create($validated);
@@ -46,7 +46,7 @@ class WarehouseController extends Controller
     {
         $validated = $request->validate([
             "name"=>"required|string",
-            "depatment_id"=> "required|exists:departments,id",
+            "department_id"=> "required|exists:departments,id",
             ]);
             $warehouse -> update($validated);
             return $warehouse;

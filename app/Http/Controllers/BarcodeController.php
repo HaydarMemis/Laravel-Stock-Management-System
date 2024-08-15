@@ -20,8 +20,8 @@ class BarcodeController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate(
-            ["barcode" => "required",
-            "product_id" => "required",
+            ["barcode" => "required|string|max:15",
+            "product_id" => "equired|string",
         ]);
     }
 
@@ -40,7 +40,8 @@ class BarcodeController extends Controller
     public function update(Request $request, Barcode $barcode)
     {
         $validated = $request->validate([
-            "barcode"=> "requrired", "product_id"=> "required",
+            "barcode"=> "required|string|max:15",
+            "product_id"=> "equired|string",
         ]);
         $barcode->update($validated);
         return $barcode;

@@ -26,11 +26,12 @@ class UserController extends Controller
             [
                 "full_name" => "required|string",
                 "email" => "required|email|unique:users",
-                "username" => "required|unique:users",
                 "password" => "required|string|min:8|confirmed",
                 "department_id" => "required|exists:departments,id",
-                "phone" => "required|numeric|unique:users",
-                "registiration_number" => "required|string|unique:users",
+                "username" => "required|string|max:255|unique:users,username,",
+                "phone" => 'required|string|max:15|unique:users,phone,',
+                "registration_number" => "required|string|max:50|unique:users",
+
             ]
         );
         $user = User::create($validated);
@@ -54,12 +55,12 @@ class UserController extends Controller
         $validated = $request->validate(
             [
                 "full_name" => "required|string",
-                "email" => "required|email|unique:users",
-                "username" => "required|unique:users",
+                "email" => "required|email|unique:users,email," .$user-> id,
+                "username" => "required|unique:users,username" .$user->id,
                 "password" => "required|string|min:8|confirmed",
                 "department_id" => "required|exists:departments,id",
-                "phone" => "required|numeric|unique:users",
-                "registiration_number" => "required|string|unique:users",
+                "phone" => "required|numeric|unique:users,users,phone," . $user->id,
+                "registiration_number" => "required|string|unique:users,registiration_number," . $user->id,
             ]
         );
         $user = User::create($validated);
