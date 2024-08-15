@@ -23,14 +23,16 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate(
-            ["full_name"=>"required|string",
-            "email"=> "required|email|unique:users",
-            "username"=> "required|unique:users",
-            "password"=> "required|password",
-            "department_id"=> "required|exist:departments,id",
-            "phone"=> "required|numeric|unique:users",
-            "registiration_number"=> "required|string|unique:users",
-        ]);
+            [
+                "full_name" => "required|string",
+                "email" => "required|email|unique:users",
+                "username" => "required|unique:users",
+                "password" => "required|string|min:8|confirmed",
+                "department_id" => "required|exists:departments,id",
+                "phone" => "required|numeric|unique:users",
+                "registiration_number" => "required|string|unique:users",
+            ]
+        );
         $user = User::create($validated);
         return $user;
     }
@@ -50,14 +52,16 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $validated = $request->validate(
-            ["full_name"=>"required|string",
-            "email"=> "required|email|unique:users",
-            "username"=> "required|unique:users",
-            "password"=> "required|password",
-            "department_id"=> "required|exist:departments,id",
-            "phone"=> "required|numeric|unique:users",
-            "registiration_number"=> "required|string|unique:users",
-        ]);
+            [
+                "full_name" => "required|string",
+                "email" => "required|email|unique:users",
+                "username" => "required|unique:users",
+                "password" => "required|string|min:8|confirmed",
+                "department_id" => "required|exists:departments,id",
+                "phone" => "required|numeric|unique:users",
+                "registiration_number" => "required|string|unique:users",
+            ]
+        );
         $user = User::create($validated);
         return $user;
     }
@@ -69,7 +73,7 @@ class UserController extends Controller
     {
         $user->delete();
         return response()->json([
-            "message"=> "Successfully Deleted",
-            ]);
+            "message" => "Successfully Deleted",
+        ]);
     }
 }
