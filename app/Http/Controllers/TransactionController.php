@@ -31,7 +31,7 @@ class TransactionController extends Controller
             "report"=> "nullable|string",
             "barcode_id"=> "required|exist:barcodes,id",
         ]);
-        $transaction = Transaction::create($request->all());
+        $transaction = Transaction::create($validated);
         return $transaction;
     }
 
