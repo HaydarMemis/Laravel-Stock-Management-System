@@ -33,6 +33,14 @@ class DepartmentController extends Controller
         return $department;
     }
 
+    public function restore($id)
+    {
+        $department = Department::withTrashed()->find($id);
+        $department -> restore;
+        return $department();
+
+    }
+
     /**
      * Display the specified resource.
      */

@@ -16,7 +16,6 @@ class BarcodeController extends Controller
         return $barcode;
     }
 
-
     public function store(Request $request)
     {
         $validated = $request->validate(
@@ -45,6 +44,15 @@ class BarcodeController extends Controller
         ]);
         $barcode->update($validated);
         return $barcode;
+    }
+
+
+    public function restore($id)
+    {
+        $barcode = Barcode::withTrashed()->find($id);
+        $barcode -> restore;
+        return $barcode();
+
     }
 
     /**

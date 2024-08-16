@@ -67,6 +67,14 @@ class UserController extends Controller
         return $user;
     }
 
+    public function restore($id)
+    {
+        $user = User::withTrashed()->find($id);
+        $user -> restore;
+        return $user();
+
+    }
+
     /**
      * Remove the specified resource from storage.
      */

@@ -40,6 +40,15 @@ class CategoryController extends Controller
     }
 
 
+    public function restore($id)
+    {
+        $category = Category::withTrashed()->find($id);
+        $category -> restore;
+        return $category();
+
+    }
+
+
     /**
      * Update the specified resource in storage.
      */

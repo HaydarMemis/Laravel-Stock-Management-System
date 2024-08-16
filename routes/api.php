@@ -33,3 +33,12 @@ Route ::apiResources([
     'products'=>ProductController::class,
 ]);
 
+use App\Http\Controllers\WarehousesController;
+
+Route::post('/warehouses/{id}/restore', [WarehouseController::class, 'restore'])->name("warehouses.restore");
+Route::post('/barcode/{id}/restore', [BarcodeController::class, 'restore'])->name("barcode.restore");
+Route::post('/category/{id}/restore', [CategoryController::class, 'restore'])->name("category.restore");
+Route::post('/department/{id}/restore', [DepartmentController::class, 'restore'])->name("department.restore");
+Route::post('/product/{id}/restore', [ProductController::class, 'restore'])->name("product.restore");
+Route::post('/transaction/{id}/restore', [TransactionController::class, 'restore'])->name("transaction.restore");
+Route::post('/user/{id}/restore', [UserController::class, 'restore'])->name("user.restore");

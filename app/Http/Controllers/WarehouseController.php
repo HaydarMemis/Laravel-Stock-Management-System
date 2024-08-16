@@ -39,6 +39,14 @@ class WarehouseController extends Controller
         return $warehouse;
     }
 
+    public function restore($id)
+    {
+        $warehouse = Warehouse::withTrashed()->find($id);
+        $warehouse->restore();
+        return $warehouse;
+
+    }
+
     /**
      * Update the specified resource in storage.
      */

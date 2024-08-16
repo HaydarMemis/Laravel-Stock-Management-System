@@ -17,6 +17,13 @@ class ProductController extends Controller
     }
 
 
+    {
+        $product = Product::withTrashed()->find($id);
+        $product -> restore;
+        return $product();
+
+    }
+
     /**
      * Store a newly created resource in storage.
      */

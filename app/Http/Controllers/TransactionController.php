@@ -63,6 +63,13 @@ class TransactionController extends Controller
         return $transaction;
     }
 
+    {
+        $transaction = Transaction::withTrashed()->find($id);
+        $transaction -> restore;
+        return $transaction();
+
+    }
+
     /**
      * Remove the specified resource from storage.
      */
