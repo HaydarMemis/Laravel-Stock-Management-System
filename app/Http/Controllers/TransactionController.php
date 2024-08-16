@@ -63,6 +63,7 @@ class TransactionController extends Controller
         return $transaction;
     }
 
+    public function restore($id)
     {
         $transaction = Transaction::withTrashed()->find($id);
         $transaction -> restore;
