@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +19,7 @@ class BarcodeFactory extends Factory
     {
         return [
             'barcode' => fake()->ean13(),
+            "product_id" => Product::factory(),
         ];
     }
 }

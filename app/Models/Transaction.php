@@ -23,4 +23,13 @@ class Transaction extends Model
         {
             return $this ->belongsToMany(Department::class);
         }
+        /**
+         * The attributes that should be cast to native types.
+         *
+         * @var array
+         */
+        protected $casts = [
+            'receipt_place' => 'json',
+            'issue_place' => 'json',
+        ];
 }

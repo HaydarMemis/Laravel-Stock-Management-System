@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Barcode;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\Warehouse;
@@ -23,8 +24,7 @@ class TransactionFactory extends Factory
             'pieces' => fake()->randomDigit(),
             'receipt_place' => fake()->creditCardDetails(),
             'issue_place' => fake()->creditCardDetails(),
-            'report' => fake()->file(),
-            'barcode' => fake()->ean13(),
+            'barcode_id' => Barcode::factory(),
             'warehouse_id' => Warehouse::factory(),
             'product_id' => Product::factory(),
             'user_id' => User::factory(),

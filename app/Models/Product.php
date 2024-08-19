@@ -21,4 +21,13 @@ class Product extends Model
         {
             return $this->belongsToMany(Department::class);
         }
+        /**
+         * The attributes that should be cast.
+         *
+         * @var array
+         */
+        protected $casts = [
+            'information' => 'json',
+        ];
 }
+

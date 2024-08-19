@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->foreignId('department_id')->constrained()->nullable();
             $table->string('phone');
-            $table->string('registiration_number');
+            $table->string('registration_number');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

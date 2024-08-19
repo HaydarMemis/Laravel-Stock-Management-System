@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,11 @@ class UserController extends Controller
         return $users;
     }
 
+    public function create()
+    {
+        $departments = Department::all();
+        return response()->json($departments);
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -46,6 +52,11 @@ class UserController extends Controller
         return $user;
     }
 
+    public function edit()
+    {
+        $departments = Department::all();
+        return response()->json($departments);
+    }
 
     /**
      * Update the specified resource in storage.

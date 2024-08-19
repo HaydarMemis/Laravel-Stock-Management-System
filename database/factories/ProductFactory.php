@@ -19,7 +19,7 @@ class ProductFactory extends Factory
         return [
                 'name' => fake()->name(),
                 'information' => fake()->creditCardDetails(),
-                'type' => fake()->type(),
+                'type' => fake()->randomElement(["weight","pieces"]),
         ];
     }
 }

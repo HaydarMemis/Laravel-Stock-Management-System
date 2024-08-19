@@ -14,8 +14,6 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->create()->each(function (User $user) {
-            $user->department()->associate(Department::first());
-        });
+        User::factory()->count(10)->create();
     }
 }
