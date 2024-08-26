@@ -25,7 +25,7 @@ class TransactionController extends Controller
             ["pieces"=>"required|numeric",
             "warehouse_id"=> "required|exists:warehouses,id",
             "product_id"=> "required|exists:products,id",
-            "user_id"=> "required|exist:users,id",
+            //"user_id"=> "required|exist:users,id",
             "receipt_place"=> "required|json",
             "issue_place"=> "required,json",
             "report"=> "nullable|string",
